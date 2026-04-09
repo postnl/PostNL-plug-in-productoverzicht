@@ -176,7 +176,7 @@ th.group {
 /* Tekstkolommen */
 td.text {
   color: var(--text);
-  font-weight: 600;
+  font-weight: 400; /* normaal (niet vet) */
 }
 
 td.empty {
