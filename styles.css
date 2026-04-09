@@ -1,19 +1,10 @@
+
+/* ============================= */
+/* RESET & BASIS */
+/* ============================= */
+
 * {
   box-sizing: border-box;
-}
-
-:root {
-  --bg: #f6f8fb;
-  --surface: #ffffff;
-  --surface-2: #f2f5f9;
-  --border: #d9e1ea;
-  --text: #17212b;
-  --muted: #6b7785;
-  --brand: #005aa0;
-  --brand-2: #e8f1fb;
-  --ok: #0f8a3c;
-  --no: #8a94a3;
-  --shadow: 0 12px 32px rgba(23, 33, 43, 0.08);
 }
 
 html {
@@ -22,38 +13,75 @@ html {
 
 body {
   margin: 0;
-  font-family: Inter, Arial, Helvetica, sans-serif;
-  color: var(--text);
-  background: linear-gradient(180deg, #f8fafc 0%, var(--bg) 100%);
+  font-family: "PostNL", Inter, Arial, Helvetica, sans-serif;
+  color: #17212b;
+  background: #f4f6f8;
 }
 
-.page {
-  max-width: 1680px;
-  margin: 0 auto;
-  padding: 32px 20px 48px;
+/* ============================= */
+/* POSTNL DESIGN TOKENS */
+/* ============================= */
+
+:root {
+  /* PostNL brand */
+  --postnl-orange: #ff6200;
+  --postnl-blue: #003a8f;
+
+  /* Surfaces */
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --surface-soft: #f9fafb;
+
+  /* Borders & text */
+  --border: #d0d7e2;
+  --text: #17212b;
+  --muted: #5f6b7a;
+
+  /* Status */
+  --ok: #157a3d;
+  --no: #8b95a3;
+
+  /* Effects */
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  --radius: 16px;
 }
+
+/* ============================= */
+/* LAYOUT */
+/* ============================= */
+
+.page {
+  max-width: 100vw;
+  padding: 24px 20px 40px;
+  margin: 0 auto;
+}
+
+/* ============================= */
+/* HERO */
+/* ============================= */
 
 .hero {
   display: flex;
   justify-content: space-between;
   gap: 24px;
-  align-items: end;
+  align-items: flex-end;
   margin-bottom: 20px;
 }
 
 .eyebrow {
   margin: 0 0 8px;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--brand);
+  color: var(--postnl-orange);
 }
 
 h1 {
-  margin: 0 0 10px;
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  margin: 0 0 8px;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
   line-height: 1.1;
+  color: var(--postnl-blue);
 }
 
 .intro {
@@ -61,115 +89,142 @@ h1 {
   color: var(--muted);
 }
 
+/* ============================= */
+/* LEGEND */
+/* ============================= */
+
 .legend {
   display: flex;
-  flex-wrap: wrap;
   gap: 12px;
-  padding: 14px 16px;
+  padding: 12px 16px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
-  color: var(--muted);
+  font-size: 0.9rem;
   white-space: nowrap;
 }
 
 .legend strong {
-  color: var(--text);
+  color: var(--postnl-blue);
 }
 
+/* ============================= */
+/* TABEL WRAPPER */
+/* ============================= */
+
 .table-wrap {
-  overflow: auto;
+  width: 100%;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
+  overflow: hidden; /* bewust GEEN horizontale scroll */
 }
+
+/* ============================= */
+/* TABEL */
+/* ============================= */
 
 table {
   width: 100%;
-  min-width: 1320px;
-  border-collapse: separate;
-  border-spacing: 0;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 12px;
+  line-height: 1.4;
 }
+
+/* ============================= */
+/* TABLE HEADER */
+/* ============================= */
 
 thead th {
   position: sticky;
   top: 0;
   z-index: 2;
-  padding: 14px 16px;
-  text-align: left;
-  font-size: 0.95rem;
-  line-height: 1.2;
-  color: var(--text);
-  background: var(--surface-2);
-  border-bottom: 2px solid var(--border);
-}
-
-thead th.platform {
-  text-align: center;
-}
-
-tbody th.group,
-tbody td {
-  padding: 12px 16px;
-  font-size: 0.95rem;
-  line-height: 1.35;
-  border-bottom: 1px solid var(--border);
-  background: var(--surface);
-  vertical-align: top;
-}
-
-tbody th.group {
-  width: 180px;
-  min-width: 180px;
+  background: var(--surface-soft);
+  color: var(--postnl-blue);
   font-weight: 700;
-  color: var(--brand);
-  background: var(--brand-2);
+  padding: 10px 8px;
+  border-bottom: 2px solid var(--postnl-orange);
+}
+
+/* ============================= */
+/* TABLE BODY */
+/* ============================= */
+
+th,
+td {
+  padding: 8px;
+  vertical-align: top;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+tbody td {
+  border-bottom: 1px solid var(--border);
+}
+
+/* Groep kolom */
+th.group {
+  background: #fff5ef; /* subtiel PostNL-oranje */
+  color: var(--postnl-blue);
+  font-weight: 700;
   border-right: 1px solid var(--border);
 }
 
-tbody td:nth-child(2) {
-  min-width: 420px;
+/* Tekstkolommen */
+td.text {
+  color: var(--text);
   font-weight: 600;
 }
 
-tbody td:nth-child(3) {
-  min-width: 320px;
-  color: var(--muted);
+td.empty {
+  color: var(--no);
 }
 
-tbody td.yes,
-tbody td.no,
-tbody td.empty {
-  width: 110px;
-  min-width: 110px;
+/* ============================= */
+/* KOLOMBREEDTES */
+/* ============================= */
+
+th:nth-child(1) { width: 10%; }
+th:nth-child(2) { width: 18%; }
+th:nth-child(3) { width: 22%; }
+
+/* Platform kolommen */
+th.platform,
+td[data-platform] {
+  width: 5%;
   text-align: center;
   font-weight: 700;
-  font-size: 1rem;
 }
 
-tbody td.yes {
+/* Status */
+td.yes {
   color: var(--ok);
 }
 
-tbody td.no,
-tbody td.empty {
+td.no,
+td.empty {
   color: var(--no);
 }
 
-.muted {
-  color: var(--no);
-}
+/* ============================= */
+/* HOVER */
+/* ============================= */
 
 tbody tr:hover td,
 tbody tr:hover th.group {
-  background-image: linear-gradient(rgba(0, 90, 160, 0.04), rgba(0, 90, 160, 0.04));
+  background: rgba(255, 98, 0, 0.04);
 }
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
 
 @media (max-width: 900px) {
   .page {
-    padding: 20px 12px 32px;
+    padding: 16px 12px 24px;
   }
 
   .hero {
@@ -180,73 +235,4 @@ tbody tr:hover th.group {
   .legend {
     white-space: normal;
   }
-}
-
-
-/* ============================= */
-/* TABEL – PAST OP 1 PAGINA */
-/* ============================= */
-
-/* Algemene layout */
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-}
-
-/* Zorg dat de pagina maximaal de viewport gebruikt */
-.page {
-  max-width: 100vw;
-  padding: 16px;
-  box-sizing: border-box;
-}
-
-/* Tabel configuratie */
-.table-wrap {
-  width: 100%;
-  overflow-x: hidden; /* geen horizontaal scrollen */
-}
-
-/* Essentieel */
-table {
-  width: 100%;
-  table-layout: fixed; /* forceert kolommen binnen viewport */
-  border-collapse: collapse;
-  font-size: 12px; /* kleiner maar nog leesbaar */
-  line-height: 1.4;
-}
-
-/* Kolommen */
-th,
-td {
-  padding: 6px 8px;
-  vertical-align: top;
-  word-break: break-word;
-  overflow-wrap: break-word;
-}
-
-/* Eerste kolommen krijgen meer ruimte */
-th:nth-child(1) { width: 10%; }
-th:nth-child(2) { width: 18%; }
-th:nth-child(3) { width: 22%; }
-
-/* Platform kolommen strak */
-th.platform,
-td[data-platform] {
-  width: 5%;
-  text-align: center;
-  white-space: nowrap;
-}
-
-/* Groepstitels */
-th.group {
-  background: #f5f5f5;
-  font-weight: 600;
-}
-
-/* Kop vastzetten */
-thead th {
-  position: sticky;
-  top: 0;
-  background: #ffffff;
-  z-index: 1;
 }
