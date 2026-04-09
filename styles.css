@@ -236,3 +236,11 @@ tbody tr:hover th.group {
     white-space: normal;
   }
 }
+
+.legend {
+  display: flex;
+  flex-wrap: nowrap;     /* voorkomt afbreken */
+  align-items: center;
+  gap: 16px;
+  white-space: nowrap;   /* extra zekerheid */
+}
